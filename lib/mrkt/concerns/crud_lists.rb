@@ -10,6 +10,15 @@ module Mrkt
       get("/rest/v1/list/#{list_id}/leads.json", {}, optional)
     end
 
+    def get_lists(batch_size: nil, next_page_token: nil)
+      optional = {
+        batchSize: batch_size,
+        nextPageToken: next_page_token
+      }
+
+      get("/rest/v1/lists.json", {}, optional)
+    end
+
     def add_leads_to_list(list_id, lead_ids)
       post_json("/rest/v1/lists/#{list_id}/leads.json") do
         { input: map_lead_ids(lead_ids) }
