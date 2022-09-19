@@ -2,9 +2,12 @@ module Mrkt
   module CrudCustomFields
     def create_custom_fields(fields)
       fields.map! do |field|
-        name: name.presence || display_name.parameterize.underscore.camelize(:lower),
-        dataType: data_type.presence || "string",
-        isCustom: true
+        {
+          name: field,
+          displayName: field,
+          dataType: "string",
+          isCustom: true
+        }
       end
 
       post_json("/rest/v1/leads/schema/fields.json") do
