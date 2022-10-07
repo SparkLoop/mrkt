@@ -5,11 +5,12 @@ module Mrkt
         params = {
           fields: fields,
           format: "CSV",
-          columnHeaderNames: column_header_names
+          columnHeaderNames: column_header_names,
+          filter: {
+            startAt: start_at,
+            endAt: end_at
+          }
         }
-
-        optional = {}
-        optional[:filter] = { createdAt: { startAt: start_at, endAt: end_at } } if start_at && end_at
 
         merge_params(params, optional)
       end
