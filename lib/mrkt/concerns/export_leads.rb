@@ -7,8 +7,10 @@ module Mrkt
           format: "CSV",
           columnHeaderNames: column_header_names,
           filter: {
-            startAt: start_at,
-            endAt: end_at
+            createdAt: {
+              startAt: start_at,
+              endAt: end_at
+            }
           }
         }
 
