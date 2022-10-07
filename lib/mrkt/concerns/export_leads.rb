@@ -1,19 +1,16 @@
 module Mrkt
   module ExportLeads
-    def create_job(fields, column_header_names: {}, start_at: nil, end_at: nil)
+    def create_job(fields: [], column_header_names: {}, start_at: nil, end_at: nil)
       params = {
         fields: fields,
         format: "CSV",
-        columnHeaderNames: column_header_names,
-        filter: {
-          createdAt: {
-            startAt: start_at,
-            endAt: end_at
-          }
-        }
+        columnHeaderNames: column_header_names
       }
 
-      post('/bulk/v1/leads/export/create.json', params)
+      optional = {}
+      optional[:filter] = { createdAt: { startAt: start_at, endAt: end_at } } if start_at && end_at
+
+      post('/bulk/v1/leads/export/create.json', params, optional)
     end
 
     def start_job(id)
