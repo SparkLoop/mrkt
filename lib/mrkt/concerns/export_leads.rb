@@ -10,7 +10,7 @@ module Mrkt
       optional = {}
       optional[:filter] = { createdAt: { startAt: start_at, endAt: end_at } } if start_at && end_at
 
-      post('/bulk/v1/leads/export/create.json', params, optional)
+      post_json('/bulk/v1/leads/export/create.json', params, optional)
     end
 
     def start_job(id)
