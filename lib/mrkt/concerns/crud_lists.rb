@@ -10,6 +10,14 @@ module Mrkt
       get("/rest/v1/list/#{list_id}/leads.json", {}, optional)
     end
 
+    def get_leads_memberships_by_list(list_id, lead_ids: [], batch_size: nil)
+      params = {
+        input: map_lead_ids(lead_ids)
+      }
+
+      get("/rest/v1/lists/#{list_id}/leads/ismember.json", params, {})
+    end
+
     def get_lists(batch_size: nil, next_page_token: nil)
       optional = {
         batchSize: batch_size,
