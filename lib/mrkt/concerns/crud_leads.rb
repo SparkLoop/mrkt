@@ -40,6 +40,10 @@ module Mrkt
       end
     end
 
+    def get_lead_lists_membership(lead_id)
+      get("/rest/v1/leads/#{lead_id}/listMembership.json", {}, {})
+    end
+
     def delete_leads(leads)
       delete('/rest/v1/leads.json') do |req|
         json_payload(req, input: map_lead_ids(leads))
