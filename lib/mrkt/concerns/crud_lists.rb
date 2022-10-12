@@ -12,7 +12,7 @@ module Mrkt
 
     def get_leads_memberships_by_list(list_id, lead_ids: [], batch_size: nil)
       params = {
-        input: map_lead_ids(lead_ids)
+        id: lead_ids
       }
 
       get("/rest/v1/lists/#{list_id}/leads/ismember.json", params, {})
