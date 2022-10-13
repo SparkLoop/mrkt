@@ -14,7 +14,7 @@ module Mrkt
           }
         }
 
-        merge_params(params, optional)
+        merge_params(params, {})
       end
     end
 
