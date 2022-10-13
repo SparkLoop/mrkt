@@ -1,6 +1,8 @@
 module Mrkt
   module CrudCustomFields
     def create_custom_fields(fields)
+      # dataType can be one of the following:
+      # ['boolean', 'currency', 'date', 'datetime', 'email', 'float', 'integer', 'percent', 'phone', 'score', 'string', 'url']
       fields.map! do |field|
         {
           name: field,

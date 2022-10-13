@@ -14,7 +14,6 @@ module Mrkt
           format: "CSV",
           columnHeaderNames: column_header_names,
           filter: filter_fields.merge(optional_filters)
-          }
         }
 
         merge_params(params, {})
