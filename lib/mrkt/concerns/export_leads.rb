@@ -1,16 +1,19 @@
 module Mrkt
   module ExportLeads
-    def create_export_job(fields: [], column_header_names: {}, start_at: nil, end_at: nil)
+    def create_export_job(fields: [], column_header_names: {}, start_at: nil, end_at: nil, optional_filters: {})
       post_json('/bulk/v1/leads/export/create.json') do
+        filter_fields = {
+          createdAt: {
+            startAt: start_at,
+            endAt: end_at
+          }
+        }
+
         params = {
           fields: fields,
           format: "CSV",
           columnHeaderNames: column_header_names,
-          filter: {
-            createdAt: {
-              startAt: start_at,
-              endAt: end_at
-            }
+          filter: filter_fields.merge(optional_filters)
           }
         }
 
