@@ -5,9 +5,9 @@ module Mrkt
       # ['boolean', 'currency', 'date', 'datetime', 'email', 'float', 'integer', 'percent', 'phone', 'score', 'string', 'url']
       fields.map! do |field|
         {
-          name: field,
-          displayName: field,
-          dataType: "string",
+          name: field[:name],
+          displayName: field[:name],
+          dataType: field[:data_type].presence || "string",
           isCustom: true
         }
       end
